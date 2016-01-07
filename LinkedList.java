@@ -11,6 +11,13 @@ public class LinkedList implements List {
 		}
 	} 
 
+	public LinkedListNode getStartOfList() {
+		return startOfList;
+	}
+
+	public void setStartOfList(LinkedListNode n) {
+		this.startOfList = n;
+	} 
 
 	public int size () {
 		return numberOfElements;
@@ -22,9 +29,9 @@ public class LinkedList implements List {
 		} else {
 			LinkedListNode tempNode = startOfList;
 			for(int i = 0; i < index; i++) {
-				tempNode = tempNode.nextObject;
+				tempNode = tempNode.getNextNode();
 			}
-			return new ReturnObjectImpl(tempNode.object);
+			return new ReturnObjectImpl(tempNode.getObject());
 		}
 	}
 
@@ -34,21 +41,37 @@ public class LinkedList implements List {
 			} else {
 				LinkedListNode tempNode = startOfList;
 				for(int i = 0; i < index; i++) {
-					tempNode = tempNode.nextObject;
+					tempNode = tempNode.getNextNode();
 			}
 			LinkedListNode objectRemoved = tempNode;
-			tempNode.nextObject = tempNode.nextObject.nextObject;
+			tempNode.setNextNode(tempNode.getNextNode().getNextNode());
 			numberOfElements--;
-			return new ReturnObjectImpl(objectRemoved.object);
+			return new ReturnObjectImpl(objectRemoved.getObject());
 		}
 	}
 
-
-
-
-
 	public ReturnObject add(int index, Object item) {
-		return new ReturnObjectImpl(item);
+		
+		LinkedListNode newNode = new LinkedListNode(item);
+
+		if (index < 0 || index >= numberOfElements) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			} else {
+				if (startOfList == null) {
+					startOfList = newNode;
+					numberOfElements++;
+					return new ReturnObjectImpl(item);
+				} else {
+					LinkedListNode tempNode = startOfList;
+					for (int i = 0; i < index-1; i++) {
+						tempNode = tempNode.getNextNode();
+				}
+				newNode.setNextNode(tempNode.getNextNode());
+				tempNode.setNextNode(newNode);
+				}
+				numberOfElements++;
+				return new ReturnObjectImpl(newNode.getObject());
+		}
 	}
 
 	public ReturnObject add(Object item) {
@@ -61,11 +84,10 @@ public class LinkedList implements List {
 			return new ReturnObjectImpl(item);
 		} else {
 			LinkedListNode temp = startOfList;
-			while (temp.nextObject != null) {
-				temp = temp.nextObject;
+			while (temp.getNextNode() != null) {
+				temp = temp.getNextNode();
 			}
-
-			temp.nextObject = newNode;
+			temp.setNextNode(newNode);
 			numberOfElements++;
 			return new ReturnObjectImpl(item);
 		}

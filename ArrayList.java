@@ -1,6 +1,6 @@
 public class ArrayList implements List {
 
-	private object[] intArray;
+	private Object[] intArray;
 	private final static int DEFAULT_SIZE = 20;
 	private int numberOfElements;
 
@@ -9,37 +9,37 @@ public class ArrayList implements List {
 		numberOfElements = 0;
 	}
 
-	public boolean isEmpty {
+	public boolean isEmpty() {
 		return numberOfElements == 0;
 	}
 
-	public int size {
-		return numberOfElements
+	public int size() {
+		return numberOfElements;
 	}
 
 	public ReturnObject get(int index) {
-		if (index < 0 || index >= numberofElements) {
-			return new ReturnObjectImpl(ErrorMessage.Index_Out_Of_Bounds)
+		if (index < 0 || index >= numberOfElements) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
-			return new ReturnObjectImpl(intArray[index])
+			return new ReturnObjectImpl(intArray[index]);
 		}
 	}
 
 	public ReturnObject remove(int index) {
-		if (index < 0 || index >= numberofElements) {
-			return new ReturnObjectImpl(ErrorMessage.Index_Out_Of_Bounds)
+		if (index < 0 || index >= numberOfElements) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
-	  		Object[] tempArray = intArray;
-	  		for(int i = 0; i < intArray.index; i++) {
+	  		Object[] tempArray = new Object[numberOfElements];
+	  		for(int i = 0; i < numberOfElements-1; i++) {
 	  			if (i < index) {
-	  				temp[i] = intArray[i];
+	  				tempArray[i] = intArray[i];
 	  			} else {
-	  				temp[i] = intArray[i+1];
+	  				tempArray[i] = intArray[i+1];
 	  			}
 	  		}
 	  		this.intArray = tempArray;
 	  		numberOfElements--;
-	  		return ReturnObjectImpl(intArray[index];
+	  		return new ReturnObjectImpl(intArray[index]);
 	  	}
 
 	}
@@ -51,16 +51,21 @@ public class ArrayList implements List {
 			if (isAlmostFull()) {
 			reserveMoreMemory();
 	  		}
-	  		Object[] tempArray = intArray;
-	  		for(int i = 0; i < intArray.length; i++) {
+	  		Object[] tempArray = new Object[numberOfElements+1];
+	  		for(int i = 0; i <= numberOfElements; i++) {
 	  			if (i < index) {
-	  				temp[i] = intArray[i];
-	  			} else {
-		  			temp[i+1] = intArray[i];
+	  				tempArray[i] = intArray[i];
+	  			} else if (i == index) {
+	  					tempArray[i] = item;
+	  				} else {              
+		  			tempArray[i] = intArray[i-1];
 	  			}
+	  		}
 	  		this.intArray = tempArray;
-	  		return ReturnObjectImpl(intArray[index];
-	  	}
+	  		}
+		numberOfElements++;
+		return new ReturnObjectImpl(intArray[index]);
+		
 	}
 
 	public ReturnObject add(Object item) {
@@ -72,12 +77,12 @@ public class ArrayList implements List {
 	  		}
 	  		intArray[numberOfElements] = item;
 	  		numberOfElements++;
-	  		return new ReturnObjectImpl(intArray[item]);
+	  		return new ReturnObjectImpl(item);
 		}
 	}
 
 	private boolean isAlmostFull() {
-	  if (intArray.length - size < 1) {
+	  if (intArray.length - numberOfElements < 1) {
 		return true;
 	  } else {
 		return false;
