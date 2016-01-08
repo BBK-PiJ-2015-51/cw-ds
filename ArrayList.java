@@ -4,6 +4,7 @@ public class ArrayList implements List {
 	private final static int DEFAULT_SIZE = 20;
 	private int numberOfElements;
 
+
 	public ArrayList() {
 		intArray = new Object[DEFAULT_SIZE];
 		numberOfElements = 0;

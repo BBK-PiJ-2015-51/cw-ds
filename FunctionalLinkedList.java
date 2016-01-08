@@ -11,11 +11,8 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList  
 	}
 
 	public FunctionalList rest() {
-		
 		newFunctionalList = new FunctionalLinkedList();
-
 		LinkedListNode tempNode = getStartOfList().getNextNode();
-
 		while (tempNode.getNextNode() != null) {
 			Object tempObject = new Object();
 			tempObject = tempNode.getObject();
