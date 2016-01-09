@@ -2,7 +2,7 @@
 public class ImprovedStackImpl implements ImprovedStack {
 
 	
-	StackImpl newStackImpl;
+	public StackImpl newStackImpl;
 
 	public ImprovedStackImpl(List list) {
 		newStackImpl = new StackImpl(list);
@@ -11,8 +11,17 @@ public class ImprovedStackImpl implements ImprovedStack {
 	
 	public ImprovedStack reverse() {
 		
-		ImprovedStack newImprovedStack = new ImprovedStackImpl(newStackImpl.internalList);
-		return newImprovedStack;
+		int addIndex = 1;
+		int removeIndex = 2;
+		while(addIndex <= newStackImpl.size()) {
+			newStackImpl.internalList.add(newStackImpl.internalList.get(newStackImpl.internalList.size()-addIndex).getReturnValue());
+			newStackImpl.internalList.remove(newStackImpl.internalList.size()-removeIndex);
+			addIndex++;
+			removeIndex++;
+		}
+
+		ImprovedStack reversedStack = new ImprovedStackImpl(newStackImpl.internalList);
+		return reversedStack;
 	}
 
 	public void remove(Object object) {
