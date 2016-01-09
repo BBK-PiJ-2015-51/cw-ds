@@ -10,12 +10,20 @@ public class ImprovedStackImpl implements ImprovedStack {
 	}
 	
 	public ImprovedStack reverse() {
+		
 		ImprovedStack newImprovedStack = new ImprovedStackImpl(newStackImpl.internalList);
 		return newImprovedStack;
 	}
 
 	public void remove(Object object) {
-
+		int i = 0;
+		while (i < newStackImpl.size()) {
+			if (newStackImpl.internalList.get(i).getReturnValue().equals(object)) {
+				newStackImpl.internalList.remove(i);
+			} else {
+				i++;
+			}
+		}
 	}
 
 	public boolean isEmpty() {
