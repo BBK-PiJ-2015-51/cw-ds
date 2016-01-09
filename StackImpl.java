@@ -13,16 +13,25 @@ public class StackImpl extends AbstractStack {
 	}
 
 	public void push(Object item) {
-		internalList.add(item);
 
+		internalList.add(item);
 	}
 
 	public ReturnObject top() {
-		return internalList.get(size()-1);
+
+		if (internalList.get(size()-1) == null) {
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+		} else {
+			return internalList.get(size()-1);
+		}
+		
 	}
 
 	public ReturnObject pop() {
-		return internalList.remove(size()-1);
+
+		ReturnObject temp = internalList.get(size()-1);
+		internalList.remove(size()-1);
+		return temp;
 	}
 
 }
