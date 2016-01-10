@@ -1,14 +1,34 @@
-
+/**
+ * Implementation of {@SampleableListImpl}
+ * 
+ * @author SJENKI05
+ */
 public class SampleableListImpl implements SampleableList {
 
-	List newList;
+	/**
+	 * holds the sampleable list
+	 */
+	private List newList;
 	
+	/**
+	 * constructor that creates a new list of no existing list is supplied
+	 */
+	public SampleableListImpl() {
+		newList = new ArrayList();
+	}
 
+	/**
+	 * constructor that creates a new list if existing list is supplied
+	 *
+	 * @param existing list to sample
+	 */
 	public SampleableListImpl(List l) {
 		this.newList = l;
 	}
-
 	
+	/**
+	 * changes the list to return the 1st, 3rd, 5th elements in the list
+	 */
 	public SampleableList sample() {
 		for (int i = 1; i < size(); i++) {
 			remove(i);
