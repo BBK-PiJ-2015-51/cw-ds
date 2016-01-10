@@ -1,16 +1,28 @@
-
+/**
+*Implementation of Improved Stack
+*
+* SJENKI05
+*/
 public class ImprovedStackImpl implements ImprovedStack {
 
-	
-	public StackImpl newStackImpl;
+	/**
+	*Holds the new Stack
+	*/
+	private StackImpl newStackImpl;
 
+	/**
+	* Constructor that creates the new list
+	* @param the list to be improved
+	*/
 	public ImprovedStackImpl(List list) {
 		newStackImpl = new StackImpl(list);
-		
 	}
-	
+
+	/**
+	* reverses the list to be improved
+	* @return the improved list
+	*/
 	public ImprovedStack reverse() {
-		
 		int addIndex = 1;
 		int removeIndex = 2;
 		while(addIndex <= newStackImpl.size()) {
@@ -19,11 +31,14 @@ public class ImprovedStackImpl implements ImprovedStack {
 			addIndex++;
 			removeIndex++;
 		}
-
 		ImprovedStack reversedStack = new ImprovedStackImpl(newStackImpl.internalList);
 		return reversedStack;
 	}
 
+	/**
+	* checks if object is in list and removes it
+	* @param the object to be removed
+	*/
 	public void remove(Object object) {
 		int i = 0;
 		while (i < newStackImpl.size()) {
