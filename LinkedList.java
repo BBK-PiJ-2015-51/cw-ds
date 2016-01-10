@@ -1,8 +1,25 @@
+
+/**
+* An implementation of {@List} that uses a Linked list as data structure 
+* to hold Objects using {@LinkedListNode}
+* @author SJENKI05
+*/
 public class LinkedList implements List {
 
+	/**
+	 * Holds the number of objects in the list
+	 */
 	private int numberOfElements = 0;
+
+	/**
+	 * Holds the {@LinkedListNode} at the start of the list
+	 */
 	private LinkedListNode startOfList = null;
-	                                                                    
+	                       
+	/**
+	 * Checks if the array list is empty 
+	 * @return boolean true if empty
+	 */                                             
 	public boolean isEmpty() {
 		if (startOfList == null) {
 			return true;
@@ -11,18 +28,35 @@ public class LinkedList implements List {
 		}
 	} 
 
+	/**
+	 * Checks if the array list is empty 
+	 * @return boolean true if empty
+	 */
 	public LinkedListNode getStartOfList() {
 		return startOfList;
 	}
 
+	/**
+	 * Sets the start of the list
+	 * @param the linked list node to assign to start of list
+	 */
 	public void setStartOfList(LinkedListNode n) {
 		this.startOfList = n;
 	} 
 
+	/**
+	 * Returns the size of the list
+	 * @return int size of list
+	 */
 	public int size () {
 		return numberOfElements;
 	}
 
+	/**
+	 * Returns the object at the requested index value
+	 * @param integer of index value
+	 * @return object at index value
+	 */
 	public ReturnObject get(int index) {
 		if (index < 0 || index >= numberOfElements) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
@@ -35,8 +69,16 @@ public class LinkedList implements List {
 		}
 	}
 
+	/**
+	 * Removes the object at the requested index value and reorders
+	 * subsequent list
+	 * @param integer of index value
+	 * @return object removed
+	 */
 	public ReturnObject remove(int index) {
-		if (index < 0 || index >= numberOfElements) {
+		if (isEmpty()) {
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
+		} else if (index < 0 || index >= numberOfElements) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			} else if (index == 0) {
 				LinkedListNode objectRemoved = startOfList;
@@ -61,6 +103,12 @@ public class LinkedList implements List {
 			}
 	}
 
+	/**
+	 * Adds an object at the requested index value and reorders
+	 * subsequent list
+	 * @param integer of index value and object to be added
+	 * @return object added
+	 */
 	public ReturnObject add(int index, Object item) {
 		if (item == null) {
 			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
@@ -83,10 +131,15 @@ public class LinkedList implements List {
 					}
 					numberOfElements++;
 					return new ReturnObjectImpl(newNode.getObject());
-				}
 			}
+		}
 	}
 
+	/**
+	 * Adds an object at the end of the list
+	 * @param object to be added
+	 * @return object added
+	 */
 	public ReturnObject add(Object item) {
 		if (item == null) {
 			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
@@ -107,5 +160,4 @@ public class LinkedList implements List {
 			}
 		}
 	}
-
 }
