@@ -34,13 +34,17 @@ public class TestFunctionalList {
 	  	System.out.println(list.rest().get(3).getReturnValue());
 	  
 	  	FunctionalList rest = list.rest();
+	  	System.out.print("Testing head of rest, should return two: ");
 	  	System.out.println(rest.head().getReturnValue());
+	  	System.out.print("Testing rest size, should return five: ");
 	  	System.out.println(rest.size());
 
 	  	rest.add(0,"seven");
 	  	rest.add(0,"eight");
 	  	rest.add(0,"nine");
+	  	System.out.print("Testing original list size, should be 6: ");
 	  	System.out.println(list.size());
+	  	System.out.print("Testing rest size, should be 8: ");
 	  	System.out.println(rest.size());
 	
 
