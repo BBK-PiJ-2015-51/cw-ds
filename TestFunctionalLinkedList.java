@@ -9,20 +9,18 @@ public class TestFunctionalLinkedList {
 		String e = new String("five");
 		String f = new String("six");
 
-		List originalList = new ArrayList();
+		FunctionalList originalList = new FunctionalLinkedList();
 
 		originalList.add(a);
 		originalList.add(b);
 		originalList.add(c);
 		originalList.add(d);
 		originalList.add(e);
-		originalList.add(f);
-
-		SampleableList newSampleableList = new SampleableListImpl(originalList);
-
-		System.out.println(newSampleableList.sample().get(2).getReturnValue());
-
-	
 		
+		System.out.println(originalList.head().getReturnValue());
+		
+		System.out.println(originalList.rest().get(1).getReturnValue());
+
+
 	}
 }

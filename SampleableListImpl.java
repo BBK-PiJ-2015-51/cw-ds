@@ -10,11 +10,9 @@ public class SampleableListImpl implements SampleableList {
 
 	
 	public SampleableList sample() {
-
 		for (int i = 1; i < size(); i++) {
 			remove(i);
 		}
-
 		return new SampleableListImpl(newList);
 	}
 

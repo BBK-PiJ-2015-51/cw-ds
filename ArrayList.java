@@ -31,7 +31,8 @@ public class ArrayList implements List {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 	  		Object[] tempArray = new Object[numberOfElements];
-	  		for(int i = 0; i < numberOfElements-1; i++) {
+	  		Object removeObject = intArray[index];
+	  		for(int i = 0; i < size()-1; i++) {
 	  			if (i < index) {
 	  				tempArray[i] = intArray[i];
 	  			} else {
@@ -40,7 +41,7 @@ public class ArrayList implements List {
 	  		}
 	  		this.intArray = tempArray;
 	  		numberOfElements--;
-	  		return new ReturnObjectImpl(intArray[index]);
+	  		return new ReturnObjectImpl(removeObject);
 	  	}
 
 	}
@@ -48,6 +49,8 @@ public class ArrayList implements List {
 	public ReturnObject add(int index, Object item) {
 		if (item == null) {
 			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		} else if (index < 0 || index >= numberOfElements) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
 			if (isAlmostFull()) {
 			reserveMoreMemory();
@@ -66,7 +69,6 @@ public class ArrayList implements List {
 	  		}
 		numberOfElements++;
 		return new ReturnObjectImpl(intArray[index]);
-		
 	}
 
 	public ReturnObject add(Object item) {

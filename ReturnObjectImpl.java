@@ -1,7 +1,7 @@
 public class ReturnObjectImpl implements ReturnObject {
 
-	public Object obj;
-	public ErrorMessage em;
+	private Object obj;
+	private ErrorMessage em;
 
 	public ReturnObjectImpl(Object o) {
 		this.obj = o;

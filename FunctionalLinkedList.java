@@ -1,6 +1,11 @@
 public class FunctionalLinkedList extends LinkedList implements FunctionalList  {
 
+	
 	FunctionalList newFunctionalList;
+
+	public FunctionalLinkedList() {
+
+	}
 
 	public ReturnObject head() {
 		if (getStartOfList() == null) {
