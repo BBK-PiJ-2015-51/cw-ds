@@ -6,13 +6,13 @@ public class TestScript {
     }
 
     public void launch() {
-	  FunctionalList firstList = new FunctionalArrayList();
+	  List firstList = new ArrayList();
 	  testList(firstList);
-	  FunctionalList secondList = new FunctionalLinkedList();
+	  List secondList = new LinkedList();
 	  testList(secondList);
     }
 
-    private void testList(FunctionalList list) {
+    private void testList(List list) {
 	  
 	  	System.out.println("");
 		System.out.println("Testing the list..."); 
@@ -89,12 +89,8 @@ public class TestScript {
 		System.out.print("Testing get, should return sixth String: ");
 	  	System.out.println(list.get(4).getReturnValue());
 
-	  	System.out.println("");
+	  	
 
-		System.out.print("Testing head, secondString: ");
-	  	System.out.println(list.head().getReturnValue());
-	  	System.out.print("Testing rest, sixthString: ");
-	  	System.out.println(list.rest().get(3).getReturnValue());
 	  
 	
 

@@ -1,7 +1,7 @@
 public class FunctionalLinkedList extends LinkedList implements FunctionalList  {
 
 	
-	FunctionalList newFunctionalList;
+	private FunctionalList newFunctionalList;
 
 	public FunctionalLinkedList() {
 
@@ -24,6 +24,7 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList  
 			newFunctionalList.add(tempObject);
 			tempNode = tempNode.getNextNode();
 		}
+		newFunctionalList.add(tempNode.getObject());
 		return newFunctionalList;
 	}
 

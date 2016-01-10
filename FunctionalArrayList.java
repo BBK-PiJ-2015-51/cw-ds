@@ -1,12 +1,12 @@
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 
-	FunctionalList newFunctionalList;
+	private FunctionalList newFunctionalList;
 
 	public ReturnObject head() {
-		if (get(0) == null) {
+		if (size() == 0) {
 			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 			} else {
-			return new ReturnObjectImpl(get(0));
+			return new ReturnObjectImpl(get(0).getReturnValue());
 		}
 	}
 
