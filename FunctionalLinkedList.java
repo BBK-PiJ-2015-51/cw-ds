@@ -1,20 +1,31 @@
+/**
+ * An implementation of a functional list using {@FunctionalList}
+ *
+ *  @author SJENKI05
+ */
 public class FunctionalLinkedList extends LinkedList implements FunctionalList  {
 
-	
+	/**
+ 	* holds the new Functional list to be returned
+ 	*/
 	private FunctionalList newFunctionalList;
 
-	public FunctionalLinkedList() {
-
-	}
-
+	/**
+ 	* returns the return object at head of the list
+ 	* @return the return object at head of the list
+ 	*/
 	public ReturnObject head() {
-		if (getStartOfList() == null) {
+		if (isEmpty()) {
 			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
 			return new ReturnObjectImpl(getStartOfList().getObject());
 		}
 	}
 
+	/**
+ 	* returns a new functional list excluding the head
+ 	* @return a new functional list excluding the head
+ 	*/
 	public FunctionalList rest() {
 		newFunctionalList = new FunctionalLinkedList();
 		LinkedListNode tempNode = getStartOfList().getNextNode();
@@ -27,5 +38,5 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList  
 		newFunctionalList.add(tempNode.getObject());
 		return newFunctionalList;
 	}
-
 }
+
