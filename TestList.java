@@ -1,8 +1,8 @@
-public class TestScript {
+public class TestList {
 	
 	public static void main(String[] args) {
-	  TestScript testScript = new TestScript();
-	  testScript.launch();
+	  TestList testList = new TestList();
+	  testList.launch();
     }
 
     public void launch() {
